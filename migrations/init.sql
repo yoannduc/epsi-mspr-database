@@ -54,13 +54,11 @@ CREATE TABLE IF NOT EXISTS acme.commande(
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     id_client INT NOT NULL,
     date_creation DATE NOT NULL,
-    date_validation DATE,
     FOREIGN KEY (id_client) REFERENCES client(id)
 );
 
 GRANT INSERT ON acme.commande TO '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';
 GRANT SELECT ON acme.commande TO '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';
-GRANT UPDATE ON acme.commande TO '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';
 
 -----------------------------------
 
@@ -119,12 +117,12 @@ GRANT SELECT ON acme.chiffre_affaires_total TO '$MARIADB_USER'@'%' IDENTIFIED BY
 
 CREATE VIEW IF NOT EXISTS acme.chiffre_affaires_annee AS
 SELECT
-    year(cmd.date_validation) AS annee,
+    year(cmd.date_creation) AS annee,
     SUM(pivot.quantite * prd.prix) AS chiffre_affaire 
 FROM acme.commande AS cmd
 INNER JOIN acme.produit_commande AS pivot ON pivot.id_commande = cmd.id
 INNER JOIN acme.produit AS prd ON prd.id = pivot.id_produit
-GROUP BY year(cmd.date_validation);
+GROUP BY year(cmd.date_creation);
 
 GRANT SELECT ON acme.chiffre_affaires_annee TO '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';
 
@@ -132,13 +130,12 @@ GRANT SELECT ON acme.chiffre_affaires_annee TO '$MARIADB_USER'@'%' IDENTIFIED BY
 
 CREATE VIEW IF NOT EXISTS acme.chiffre_affaires_mois AS
 SELECT
-    -- month(cmd.date_validation) AS mois,
-    DATE_FORMAT(cmd.date_validation, '%m') AS mois,
+    DATE_FORMAT(cmd.date_creation, '%m') AS mois,
     SUM(pivot.quantite * prd.prix) AS chiffre_affaire 
 FROM acme.commande AS cmd
 INNER JOIN acme.produit_commande AS pivot ON pivot.id_commande = cmd.id
 INNER JOIN acme.produit AS prd ON prd.id = pivot.id_produit
-GROUP BY DATE_FORMAT(cmd.date_validation, '%m');
+GROUP BY DATE_FORMAT(cmd.date_creation, '%m');
 
 GRANT SELECT ON acme.chiffre_affaires_mois TO '$MARIADB_USER'@'%' IDENTIFIED BY '$MARIADB_PASSWORD';
 

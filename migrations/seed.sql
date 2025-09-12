@@ -10,24 +10,24 @@ INSERT INTO acme.produit(libelle, sku, prix) VALUES
 ('produit4', '00000004', 98.7),
 ('produit5', '00000005', 65.4);
 
-INSERT INTO acme.commande(id_client, date_creation, date_validation) VALUES
-(1, '2021-01-01', '2021-01-12'),
-(1, '2021-12-31', '2022-01-07'),
-(1, '2023-06-21', '2023-07-03'),
-(1, '2025-01-23', '2025-01-31'),
-(2, '2021-03-07', '2021-03-25'),
-(2, '2021-06-23', '2022-06-24'),
-(3, '2023-08-21', '2023-08-29');
+INSERT INTO acme.commande(id_client, date_creation) VALUES
+(1, '2021-01-12'),
+(1, '2022-01-07'),
+(1, '2023-07-03'),
+(1, '2025-01-31'),
+(2, '2021-03-25'),
+(2, '2022-06-24'),
+(3, '2023-08-29');
 
-INSERT INTO acme.produit_commande(id_produit, id_commande, quantite) VALUES
+INSERT INTO acme.produit_commande(id_commande, id_produit, quantite) VALUES
 (1, 1, 1),
-(2, 1, 2),
-(3, 2, 3),
-(4, 2, 4),
-(5, 3, 5),
-(4, 3, 4),
-(3, 4, 3),
-(2, 4, 2),
-(1, 5, 12),
-(3, 6, 1),
-(4, 7, 23);
+(1, 2, 2),
+(2, 3, 3),
+(2, 4, 4),
+(3, 5, 5),
+(3, 4, 4),
+(4, 3, 3),
+(4, 2, 2),
+(5, 1, 12),
+(6, 3, 1),
+(7, 4, 23);
