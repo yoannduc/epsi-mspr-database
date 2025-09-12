@@ -8,8 +8,6 @@ ENV MARIADB_PASSWORD=$MARIADB_PASSWORD
 
 COPY ./migrations /docker-entrypoint-initdb.d
 
-COPY ./migrations /tmp/tests
-
 COPY ./pre-migrations.sh /tmp/pre-migrations.sh
 
 RUN /tmp/pre-migrations.sh
