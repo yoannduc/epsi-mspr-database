@@ -3,12 +3,12 @@ INSERT INTO acme.client(prenom, nom, numero_tel, mail, num_addr, mod_num_addr, r
 ('jane', 'doe', '01.02.03.04.05', 'jane.doe@mail.com', 456, 'TER', 'avenue des étoiles', '75001', 'Paris'),
 ('them', 'doe', '01.02.03.04.05', 'them.doe@mail.com', 789, NULL, 'rue da la canebière', '13001', 'Marseille');
 
-INSERT INTO acme.produit(libelle, sku, prix) VALUES
-('produit1', '00000001', 12.3),
-('produit2', '00000002', 45.6),
-('produit3', '00000003', 78.9),
-('produit4', '00000004', 98.7),
-('produit5', '00000005', 65.4);
+INSERT INTO acme.produit(libelle, sku, categorie, prix) VALUES
+('produit1', '00000001', 'cat1', 12.3),
+('produit2', '00000002', 'cat1', 45.6),
+('produit3', '00000003', 'cat2', 78.9),
+('produit4', '00000004', 'cat2', 98.7),
+('produit5', '00000005', 'cat3', 65.4);
 
 INSERT INTO acme.commande(id_client, date_creation) VALUES
 (1, '2021-01-12'),
