@@ -31,3 +31,8 @@ INSERT INTO acme.produit_commande(id_commande, id_produit, quantite) VALUES
 (5, 1, 12),
 (6, 3, 1),
 (7, 4, 23);
+
+INSERT INTO acme.user(prenom, nom, login, password) VALUES
+('first', 'user', 'user1@mail', '$2a$10$2/RlmINmhpd1LquwCc3H.elBBA1fRF6TLsAimvt/u8aGB89SxZ94O'),
+('second', 'user', 'user2@mail', '$2a$10$yYQEXcV0aBijWUB9bBf8AOZSw/JE1292I1xLYPZJT/jJ2qNwyGsUW'),
+('third', 'user', 'user3@mail', '$2a$10$rPP/1W6qtCSdcYy/9oXHp.qx0w86kWibEz/zlE457G3sFKbIdLefS');
